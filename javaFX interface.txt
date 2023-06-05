@@ -1,0 +1,46 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+    private TextField clientName = new TextField();
+    private TextField clientCredit = new TextField();
+    private TextField medicamentName = new TextField();
+    private TextField medicamentPrice = new TextField();
+    private TextField medicamentStock = new TextField();
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        GridPane root = new GridPane();
+
+        root.addRow(0, new Label(Client Name), clientName);
+        root.addRow(1, new Label(Client Credit), clientCredit);
+        root.addRow(2, new Label(Medicament Name), medicamentName);
+        root.addRow(3, new Label(Medicament Price), medicamentPrice);
+        root.addRow(4, new Label(Medicament Stock), medicamentStock);
+
+        Button addClientButton = new Button(Add Client);
+        addClientButton.setOnAction(event - {
+            String name = clientName.getText();
+            double credit = Double.parseDouble(clientCredit.getText());
+             Add the new client to the list of clients in the Pharmacie1 class
+        });
+        root.addRow(5, addClientButton);
+
+        Button addMedicamentButton = new Button(Add Medicament);
+        addMedicamentButton.setOnAction(event - {
+            String name = medicamentName.getText();
+            double price = Double.parseDouble(medicamentPrice.getText());
+            int stock = Integer.parseInt(medicamentStock.getText());
+             Add the new medicament to the list of medicaments in the Pharmacie1 class
+        });
+        root.addRow(6, addMedicamentButton);
+
+        primaryStage.setScene(new Scene(root, 400, 400));
+        primaryStage.show();
+    }
+}
